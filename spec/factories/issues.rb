@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :issue do
-    uu_id 'ABC-123-ABC-123-ABC'
-    description 'some issue some description'
-    reporter_email 'test@test.com'
+    uu_id IssueService::IdGenerator.new.generate
+    description Faker::Lorem.paragraph
+    reporter_email Faker::Internet.email
   end
 end

@@ -25,9 +25,9 @@ describe 'navigate' do
     end
 
     it 'can be created from new form page' do
-      desc = 'is have problem with hosting'
+      desc = Faker::Lorem.paragraph
       fill_in 'issue[description]', with: desc
-      fill_in 'issue[reporter_email]', with: 'test1@test.com'
+      fill_in 'issue[reporter_email]', with: Faker::Internet.email
       click_on 'Create Issue'
 
       expect(page.status_code).to eq(200)

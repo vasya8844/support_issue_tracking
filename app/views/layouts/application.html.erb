@@ -2,11 +2,31 @@
 <html>
 <head>
   <title>SupportIssueTracking</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<ul class="nav">
+  <li class="active"><a href="/issues">Issues</a></li>
+</ul>
+
+<p class="navbar-text pull-right">
+  <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+  <% else %>
+      <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
+  <% end %>
+</p>
 
 <%= yield %>
 

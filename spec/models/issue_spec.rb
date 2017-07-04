@@ -19,5 +19,12 @@ RSpec.describe Issue, type: :model do
       @issue.reporter_email = 'test.test.com'
       expect(@issue).to_not be_valid
     end
+
+    it 'uu_id is unique' do
+      i = FactoryGirl.create :issue, uu_id: IssueService::IdGenerator.new.generate
+      expect(i).to be_valid
+      i.uu_id = @issue.uu_id
+      expect(i).to_not be_valid
+    end
   end
 end
