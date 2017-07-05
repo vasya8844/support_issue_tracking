@@ -36,4 +36,21 @@ describe 'navigate' do
       expect(page).to have_content("Description: #{desc}")
     end
   end
+
+  describe 'updating' do
+    before do
+      @issue = FactoryGirl.create :issue
+    end
+
+    it 'can be updated' do
+      visit edit_by_uu_id_client_issues_path(uu_id: @issue.uu_id)
+
+      new_description = Faker::Lorem.paragraph
+      fill_in 'issue[description]', with: new_description
+      click_on 'Update Issue'
+
+      expect(page.status_code).to eq(200)
+      expect(page).to have_content("Description: #{new_description}")
+    end
+  end
 end

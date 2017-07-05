@@ -1,4 +1,7 @@
-<%= form_for(@issue, url: {action: :create, controller: :client_issues}) do |f| %>
+<% form_url = @issue.persisted? ?
+    update_by_uu_id_client_issues_path(uu_id: @issue.uu_id) :
+    {action: :create, controller: :client_issues} %>
+<%= form_for(@issue, url: form_url) do |f| %>
     <% if @issue.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>

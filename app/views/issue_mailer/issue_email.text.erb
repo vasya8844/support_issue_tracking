@@ -1,5 +1,6 @@
-Hi dear client
-You reported issue:
-<i>"<%= @issue.description %>"</i>
+Hi dear <%= @issue.reporter_name %>
 
-To login to the site, just follow this link: <%= '@url' %>.
+You reported issue '<%= @issue.subject %>'
+link to issue: <%= @issue.uu_id %> <%= show_by_uu_id_client_issues_url(uu_id: @issue.uu_id) %>.
+
+"<%= @issue.description %>"

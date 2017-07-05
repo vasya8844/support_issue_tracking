@@ -4,9 +4,12 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Hi dear client</h1>
+<h1>Hi dear <%= @issue.reporter_name %></h1>
 <p>
-  <b>You reported issue:</b><br>
+  <b>You reported issue '<%= @issue.subject %>'</b><br>
+  link to issue: <%= link_to @issue.uu_id, show_by_uu_id_client_issues_url(uu_id: @issue.uu_id) %>.
+  <br>
+  <br>
   <i>"<%= @issue.description %>"</i>
 </p>
 </body>
