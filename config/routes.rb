@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   root to: 'client_issues#new'
 
   resources :client_issues, only: [:new, :create] do
@@ -9,6 +10,5 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
-  resources :issues
-
+  resources :issues, only: [:index, :show]
 end

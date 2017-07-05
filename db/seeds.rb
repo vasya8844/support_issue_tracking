@@ -7,3 +7,13 @@ puts "#{users.last.email} created"
 ps.merge!(email: 'staff_admin2@test.com')
 users << User.create(ps)
 puts "user #{users.last.email} created"
+
+25.times do
+  Issue.create uu_id: IssueService::IdGenerator.new.generate,
+               subject: Faker::Pokemon.location,
+               description: Faker::Lorem.paragraph,
+               reporter_name: Faker::Pokemon.name,
+               reporter_email: Faker::Internet.email
+
+  puts "issue #{Issue.last.uu_id} created"
+end

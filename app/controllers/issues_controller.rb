@@ -1,11 +1,9 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: [:edit, :update, :destroy]
-
   def index
-    @issues = Issue.all
+    @issues = Issue.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
+    @issue = Issue.find params[:id]
   end
-
 end
