@@ -17,3 +17,10 @@ puts "user #{users.last.email} created"
 
   puts "issue #{Issue.last.uu_id} created"
 end
+
+Issue.first(3).each do |issue|
+  5.times do
+    comment = Comment.create user_id: users.first.id, issue_id: issue.id, body: Faker::Lorem.paragraph
+    puts "comment #{comment.id} created"
+  end
+end

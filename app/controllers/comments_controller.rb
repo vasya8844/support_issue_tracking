@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @issue = @comment.issue
 
     if @comment.save
+      CommentSendEmailJob.perform_later(@comment)
       redirect_to @comment.issue, notice: 'Comment was successfully created.'
     else
       params[:issue_id]

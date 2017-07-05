@@ -24,4 +24,9 @@
   <%= @issue.reporter_email %>
 </p>
 
+<%
+  comments = @issue.comments.includes(:user)
+%>
+<%= render partial: 'comments/list', locals: {comments: @issue.comments.includes(:user)} unless comments.empty? %>
+
 <%= link_to 'Edit', edit_by_uu_id_client_issues_path(uu_id: @issue.uu_id) %>

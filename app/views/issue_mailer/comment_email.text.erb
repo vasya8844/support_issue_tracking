@@ -1,0 +1,6 @@
+Hi dear <%= @issue.reporter_name %>
+
+Staff <%= @comment.user.email %> commented on your issue '<%= @issue.subject %>'
+<%= show_by_uu_id_client_issues_url(uu_id: @issue.uu_id) %>
+
+Comment: "<%= @comment.body %>"

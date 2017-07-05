@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Hi dear <%= @issue.reporter_name %></h1>
+<p>
+  <b>
+    Staff <%= @comment.user.email %> commented on your issue '<%= @issue.subject %>'
+    <%= link_to @issue.uu_id, show_by_uu_id_client_issues_url(uu_id: @issue.uu_id) %>
+  </b>
+  <br>
+  <br>
+  <b>Comment:</b> "<%= @comment.body %>"</i>
+</p>
+</body>
+</html>

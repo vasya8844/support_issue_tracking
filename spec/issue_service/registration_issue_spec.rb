@@ -3,7 +3,11 @@ require 'rails_helper'
 describe IssueService::Registration do
   describe 'register' do
     before do
-      @issue = described_class.new.register!(description: Faker::Lorem.paragraph, reporter_email: Faker::Internet.email)
+      ps = {subject: Faker::Pokemon.location,
+            description: Faker::Lorem.paragraph,
+            reporter_name: Faker::Pokemon.name,
+            reporter_email: Faker::Internet.email}
+      @issue = described_class.new.register! ps
     end
 
     it 'create issue' do
@@ -12,7 +16,6 @@ describe IssueService::Registration do
 
     it 'email to reporter' do
       expect(ActionMailer::Base.deliveries.last.to).to include(@issue.reporter_email)
-      # byebug
     end
   end
 end
