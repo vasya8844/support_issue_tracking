@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root to: 'client_issues#new'
 
-  get 'client_issues/new'
-  get 'client_issues/edit'
-  get 'client_issues/show'
+  resources :client_issues, only: [:new, :create, :edit, :update] do
+    get :show_by_uu_id, on: :collection
+  end
 
   devise_for :users
   resources :issues

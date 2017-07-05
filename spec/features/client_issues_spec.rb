@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'navigate' do
   describe 'index' do
     before do
-      visit new_issue_path
+      visit new_client_issue_path
     end
 
     it 'can be reached successfully' do
@@ -17,7 +17,7 @@ describe 'navigate' do
 
   describe 'creation' do
     before do
-      visit new_issue_path
+      visit new_client_issue_path
     end
 
     it 'has a new form that can be reached' do
