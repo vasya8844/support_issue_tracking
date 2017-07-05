@@ -1,0 +1,21 @@
+<h2>Comments</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Staff</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.body %></td>
+        <td><%= comment.user.email %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

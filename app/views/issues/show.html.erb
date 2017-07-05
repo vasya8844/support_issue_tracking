@@ -24,4 +24,11 @@
   <%= @issue.reporter_email %>
 </p>
 
+<%
+  comments = @issue.comments.includes(:user)
+%>
+<%= render partial: 'comments/list', locals: {comments: @issue.comments.includes(:user)} unless comments.empty? %>
+
+<%= link_to "Add Comment", new_comment_path(issue_id: @issue.id) %>
+
 <%= link_to 'Back', issues_path %>
