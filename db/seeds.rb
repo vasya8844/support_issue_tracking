@@ -8,12 +8,14 @@ ps.merge!(email: 'staff_admin2@test.com')
 users << User.create(ps)
 puts "user #{users.last.email} created"
 
+reporters = 5.times.collect { {name: Faker::Pokemon.name, email: Faker::Internet.email} }
 25.times do
+  reporter = reporters.sample
   Issue.create uu_id: IssueService::IdGenerator.new.generate,
                subject: Faker::Pokemon.location,
                description: Faker::Lorem.paragraph,
-               reporter_name: Faker::Pokemon.name,
-               reporter_email: Faker::Internet.email
+               reporter_name: reporter[:name],
+               reporter_email: reporter[:email]
 
   puts "issue #{Issue.last.uu_id} created"
 end

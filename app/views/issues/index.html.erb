@@ -2,12 +2,24 @@
 
 <h1>Listing Issues</h1>
 
+
+
+<%= form_tag(issues_path, :method => :get) do %>
+    <%= text_field_tag :search_uu_id, params[:search_uu_id], placeholder: 'Uu Id' %>
+    <%= text_field_tag :search_in_issue, params[:search_in_issue], placeholder: 'In description' %>
+    <%= text_field_tag :search_by_author, params[:search_by_author], placeholder: 'By author' %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
 <table>
   <thead>
     <tr>
       <th>Uu</th>
-      <th>Description</th>
+      <th width="10%">Subject</th>
+      <th width="25%">Description</th>
+      <th>Reporter name</th>
       <th>Reporter email</th>
+      <th>created at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +28,11 @@
     <% @issues.each do |issue| %>
       <tr>
         <td><%= issue.uu_id %></td>
-        <td><%= issue.description %></td>
+        <td><%= issue.subject %></td>
+        <td><%= issue.description.split.first(3).join(' ') %></td>
+        <td><%= issue.reporter_name %></td>
         <td><%= issue.reporter_email %></td>
+        <td><%= issue.created_at.strftime('%c') %></td>
         <td><%= link_to 'Show', issue %></td>
       </tr>
     <% end %>
