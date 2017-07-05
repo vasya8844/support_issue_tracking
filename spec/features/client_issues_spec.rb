@@ -26,7 +26,9 @@ describe 'navigate' do
 
     it 'can be created from new form page' do
       desc = Faker::Lorem.paragraph
+      fill_in 'issue[subject]', with: 'some problem'
       fill_in 'issue[description]', with: desc
+      fill_in 'issue[reporter_name]', with: 'some reporter'
       fill_in 'issue[reporter_email]', with: Faker::Internet.email
       click_on 'Create Issue'
 

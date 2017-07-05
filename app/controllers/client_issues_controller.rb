@@ -45,7 +45,7 @@ class ClientIssuesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def issue_params
-    params.require(:issue).permit(:description, :reporter_email)
+    params.require(:issue).permit(:subject, :description, :reporter_name, :reporter_email)
   end
 
 end
