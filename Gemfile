@@ -44,13 +44,14 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bourbon'
 
+gem 'faker'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # gem 'byebug', platform: :mri
 
   gem 'rspec-rails'
-  gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.7'
