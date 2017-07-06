@@ -8,6 +8,6 @@ class CreateIssues < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_index :issues, :uu_id, unique: true
+    add_index :issues, :uu_id, unique: true
   end
 end
