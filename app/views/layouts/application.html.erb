@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SupportIssueTracking</title>
+  <title>Support Issue Tracking</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,9 +15,11 @@
     <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
-<ul class="nav">
-  <li class="active"><a href="/issues">Issues</a></li>
-</ul>
+<% if user_signed_in? %>
+    <ul class="nav">
+      <li class="active"><a href="/issues">Issues</a></li>
+    </ul>
+<% end %>
 
 <p class="navbar-text pull-right">
   <% if user_signed_in? %>

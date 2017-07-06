@@ -1,7 +1,14 @@
 class ClientIssuesController < ApplicationController
+  include ClientIssuesHelper
+  helper ClientIssuesHelper
+
   skip_before_filter :authenticate_user!
 
   before_action :set_issue, only: [:show_by_uu_id, :edit_by_uu_id, :update_by_uu_id]
+
+  def welcome
+    redirect_to user_signed_in? ? issues_path : {action: :new}
+  end
 
   def new
     @issue = Issue.new
@@ -13,7 +20,7 @@ class ClientIssuesController < ApplicationController
     @issue = IssueService::Registration.new.register!(issue_params)
 
     if @issue.persisted?
-      redirect_to show_by_uu_id_client_issues_path(uu_id: @issue.uu_id), notice: 'Issue was successfully reported.'
+      redirect_to issue_ui_path(@issue), notice: 'Issue was successfully reported.'
     else
       render :new
     end
@@ -21,7 +28,7 @@ class ClientIssuesController < ApplicationController
 
   def update_by_uu_id
     if @issue.update(issue_params)
-      redirect_to show_by_uu_id_client_issues_path(uu_id: @issue.uu_id), notice: 'Issue was successfully updated.'
+      redirect_to issue_ui_path(@issue), notice: 'Issue was successfully updated.'
     else
       render :edit
     end

@@ -12,7 +12,7 @@
 !/log/.keep
 /tmp
 
-/.idea
+.idea/
 
 .byebug_history
 !/spec/models/user_spec.rb

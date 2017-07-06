@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'client_issues#new'
+  root to: 'client_issues#welcome'
 
   resources :client_issues, only: [:new, :create] do
     get :show_by_uu_id, :edit_by_uu_id, on: :collection
+    get :welcome
 
     put :update_by_uu_id, on: :collection
     patch :update_by_uu_id, on: :collection
